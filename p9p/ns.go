@@ -8,9 +8,8 @@ func getenv(name, dflt string) string {
 	value := os.Getenv(name)
 	if len(value) == 0 {
 		return dflt
-	} else {
-		return value
 	}
+	return value
 }
 
 func Namespace() string {

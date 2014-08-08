@@ -26,9 +26,8 @@ func parsedial(dial string) (network, laddr string, err error) {
 			host = host + ":" + f[2]
 		}
 		return f[0], host, nil
-	default:
-		return "", "", errors.New("unsupported network " + f[0])
 	}
+	return "", "", errors.New("unsupported network " + f[0])
 }
 
 /* Just like net.Dial but accepts a dial-string */
