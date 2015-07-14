@@ -40,6 +40,14 @@ func Dial(dial string) (net.Conn, error) {
 }
 
 /* Addr can be a dial-string or a service name */
+func DialSrv(addr string) (net.Conn, error) {
+	if !strings.Contains(addr, "!") {
+		addr = "unix!" + Namespace() + "/" + addr
+	}
+	return Dial(addr)
+}
+
+/* Addr can be a dial-string or a service name */
 func ListenSrv(addr string) (net.Listener, error) {
 	if !strings.Contains(addr, "!") {
 		addr = "unix!" + Namespace() + "/" + addr
